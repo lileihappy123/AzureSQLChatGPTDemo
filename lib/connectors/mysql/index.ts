@@ -9,10 +9,11 @@ const systemDatabases = ["information_schema", "mysql", "performance_schema", "s
 
 const getMySQLConnection = async (connection: Connection): Promise<mysql.Connection> => {
   
-  const path = require('path');
-  const certFilePath = path.join(__dirname, '..', '..', '..', '..', '..', 'cert','DigiCertGlobalRootCA.crt.pem');
-  const serverCa = [fs.readFileSync(certFilePath, "utf8")];
-  console.log(serverCa)
+  //const path = require('path');
+  //const certFilePath = path.join(__dirname, 'DigiCertGlobalRootCA.crt.pem');
+  //const certFilePath = path.join(__dirname, '..', '..', '..', '..', '..', 'cert','DigiCertGlobalRootCA.crt.pem');
+  //const serverCa = [fs.readFileSync(certFilePath, "utf8")];
+  //console.log(serverCa)
 
   
   const conn = await mysql.createConnection({
@@ -22,10 +23,7 @@ const getMySQLConnection = async (connection: Connection): Promise<mysql.Connect
     password: connection.password,
     database: connection.database,
     debug:false,
-    ssl: {
-      rejectUnauthorized: false,
-      ca: serverCa
-    }
+
   });
 
   return conn;
