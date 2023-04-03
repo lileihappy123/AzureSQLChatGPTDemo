@@ -4,7 +4,7 @@ import { generateUUID } from "@/utils";
 import Icon from "./Icon";
 
 // examples are used to show some examples to the user.
-const examples = ["请给我提供一下employee表的schema", "如何创建MySQL视图?"];
+const examples = ["员工总数是多少？", "总共有多少种title?","所有员工的工资总和是多少？","请给我提供一下employee表的schema?"];
 
 interface Props {
   className?: string;

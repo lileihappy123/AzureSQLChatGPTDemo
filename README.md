@@ -3,7 +3,7 @@
 This is a demo application base on https://github.com/bytebase/sqlchat
 
 更新了如下：
-* 修改原始连接器以处理 SSL 连接
+* 处于测试目的，关闭了SSL
 * 将大部分页面翻译成中文
 * 添加示例 mysql 数据库（Azure MySQL 灵活服务器）连接
 * 加载mysql官方示例数据 [employees](https://dev.mysql.com/doc/employee/en/)
