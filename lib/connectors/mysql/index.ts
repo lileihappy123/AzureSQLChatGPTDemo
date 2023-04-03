@@ -8,7 +8,10 @@ const systemDatabases = ["information_schema", "mysql", "performance_schema", "s
 
 
 const getMySQLConnection = async (connection: Connection): Promise<mysql.Connection> => {
-  const serverCa = [fs.readFileSync("/app/cert/DigiCertGlobalRootCA.crt.pem", "utf8")];
+  
+  const path = require('path');
+  const certFilePath = path.join(__dirname, '..', '..', '..', '..', '..', 'cert','DigiCertGlobalRootCA.crt.pem');
+  const serverCa = [fs.readFileSync(certFilePath, "utf8")];
   console.log(serverCa)
 
   

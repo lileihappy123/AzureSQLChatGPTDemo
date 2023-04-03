@@ -36,7 +36,7 @@ Run ```pnpm dev``` to start development server
 
 Run
 ```bash
-docker build -t azure-sql-chat-demo:v1.0 -f ./Dockerfile
+docker build -t azure-sql-chat-demo:v1.0 -f ./Dockerfile .
 docker run -p 127.0.0.1:3001:3000/tcp azure-sql-chat-demo:v1.0 --env <see .env.example file for environment variables> 
 ```
 
