@@ -15,7 +15,7 @@ const getMySQLConnection = async (connection: Connection): Promise<mysql.Connect
   //const serverCa = [fs.readFileSync(certFilePath, "utf8")];
   //console.log(serverCa)
 
-  
+  //mysql connection
   const conn = await mysql.createConnection({
     host: connection.host,
     port: parseInt(connection.port),
