@@ -1,3 +1,4 @@
+import { ConnectionOptions } from "mysql2";
 import mysql, { RowDataPacket } from "mysql2/promise";
 import { Connection } from "@/types";
 import { Connector } from "..";
@@ -16,17 +17,34 @@ const getMySQLConnection = async (connection: Connection): Promise<mysql.Connect
   //console.log(serverCa)
 
   //mysql connection
-  const conn = await mysql.createConnection({
+
+  const connectionOptions: ConnectionOptions = {
     host: connection.host,
     port: parseInt(connection.port),
     user: connection.username,
     password: connection.password,
     database: connection.database,
-    debug:false,
-
-  });
-
+  };
+  // if (connection.ssl) {
+    connectionOptions.ssl = {
+      ca: connection.ssl?.ca,
+      cert: connection.ssl?.cert,
+      key: connection.ssl?.key,
+    };
+  // }
+  const conn = await mysql.createConnection(connectionOptions);
   return conn;
+  // const conn = await mysql.createConnection({
+  //   host: connection.host,
+  //   port: parseInt(connection.port),
+  //   user: connection.username,
+  //   password: connection.password,
+  //   database: connection.database,
+  //   debug:false,
+
+  // });
+
+  // return conn;
 };
 
 const testConnection = async (connection: Connection): Promise<boolean> => {

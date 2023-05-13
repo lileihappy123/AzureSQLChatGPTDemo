@@ -5,6 +5,12 @@ export enum Engine {
   PostgreSQL = "POSTGRESQL",
 }
 
+export interface SSLOptions {
+  ca?: string;
+  cert?: string;
+  key?: string;
+}
+
 export interface Connection {
   id: Id;
   title: string;
@@ -15,4 +21,7 @@ export interface Connection {
   password: string;
   // database is only required for PostgreSQL.
   database?: string;
+  // encrypt is only required for MSSQL.
+  encrypt?: boolean;
+  ssl?: SSLOptions;
 }
