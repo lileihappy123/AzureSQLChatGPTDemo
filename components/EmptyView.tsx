@@ -2,9 +2,11 @@ import { useChatStore, useConnectionStore, useMessageStore, useUserStore } from 
 import { CreatorRole } from "@/types";
 import { generateUUID } from "@/utils";
 import Icon from "./Icon";
+import { head } from "lodash-es";
+
 
 // examples are used to show some examples to the user.
-const examples = ["员工总数是多少？", "总共有多少种title?","所有员工的工资总和是多少？","请给我提供一下employee表的schema?"];
+const examples = ["员工总数是多少？", "员工有哪些技能?","员工有哪些行业经验？"];
 
 interface Props {
   className?: string;
@@ -25,6 +27,11 @@ const EmptyView = (props: Props) => {
       if (!currentConnectionCtx) {
         chat = chatStore.createChat();
       } else {
+        const databaseList = await connectionStore.getOrFetchDatabaseList(currentConnectionCtx.connection);
+        connectionStore.setCurrentConnectionCtx({
+          connection: currentConnectionCtx.connection,
+          database: head(databaseList),
+        });
         chat = chatStore.createChat(currentConnectionCtx.connection.id, currentConnectionCtx.database?.name);
       }
     }

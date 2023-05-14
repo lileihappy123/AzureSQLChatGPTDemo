@@ -18,10 +18,10 @@ const defaultConnection: Connection = {
   id: "",
   title: "",
   engineType: Engine.MySQL,
-  host: "sqlchatteo.mysql.database.azure.com",
-  port: '3306',
-  username: "admintest",
-  password: "***abcd1234",
+  host: "mysql-server-ll.mysql.database.azure.com",
+  port: "3306",
+  username: "viewer",
+  password: "lilei123",
 };
 
 const CreateConnectionModal = (props: Props) => {

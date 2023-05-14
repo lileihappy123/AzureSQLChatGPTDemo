@@ -40,6 +40,7 @@ const ConnectionSidebar = () => {
       connectionStore.getOrFetchDatabaseList(currentConnectionCtx.connection).finally(() => {
         setIsRequestingDatabase(false);
       });
+      handleConnectionSelect(currentConnectionCtx.connection);
     } else {
       setIsRequestingDatabase(false);
     }
@@ -131,12 +132,12 @@ const ConnectionSidebar = () => {
         <div className="w-80 h-full overflow-y-hidden border-r flex flex-row justify-start items-start">
           <div className="w-16 h-full bg-gray-200 pl-2 py-4 pt-6 flex flex-col justify-between items-center">
             <div className="w-full flex flex-col justify-start items-start">
-              <button
+              {/* <button
                 className={`w-full h-14 rounded-l-lg p-2 mt-1 group ${currentConnectionCtx === undefined && "bg-gray-100 shadow"}`}
                 onClick={() => connectionStore.setCurrentConnectionCtx(undefined)}
               >
                 <img src="/chat-logo-bot.webp" className="w-7 h-auto mx-auto" alt="" />
-              </button>
+              </button> */}
               {connectionList.map((connection) => (
                 <button
                   key={connection.id}

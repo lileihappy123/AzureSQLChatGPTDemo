@@ -25,12 +25,26 @@ const sampleMySQLConnection: Connection = {
   id: "sample-mysql",
   title: "Employees MySQL",
   engineType: Engine.MySQL,
-  host: "gptmysqldemo.mysql.database.chinacloudapi.cn",
+  // host: "gptmysqldemo.mysql.database.chinacloudapi.cn",
+  // port: "3306",
+  // username: "employeeadmin",
+  // password: "!@#$qwerASDF",
+  host: "mysql-server-ll.mysql.database.azure.com",
   port: "3306",
-  username: "employeeadmin",
-  password: "!@#$qwerASDF",
+  username: "viewer",
+  password: "lilei123",
   database: "employees",
 }
+
+const defaultContextConnection: ConnectionContext = {
+  connection: sampleMySQLConnection,
+  database: {
+    connectionId: sampleMySQLConnection.id,
+    name: "employees",
+    tableList: [],
+  }
+};
+
 interface ConnectionState {
   connectionList: Connection[];
   databaseList: Database[];
@@ -47,7 +61,9 @@ interface ConnectionState {
 export const useConnectionStore = create<ConnectionState>()(
   persist(
     (set, get) => ({
-      connectionList: [samplePGConnection, sampleMySQLConnection],
+      // connectionList: [samplePGConnection, sampleMySQLConnection],
+      connectionList: [sampleMySQLConnection],
+      currentConnectionCtx: defaultContextConnection,
       databaseList: [],
       createConnection: (connection: Connection) => {
         const createdConnection = {
